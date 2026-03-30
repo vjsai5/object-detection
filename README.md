@@ -57,17 +57,6 @@ A real-time object detection and tracking system built using YOLOv8 and OpenCV. 
 
 ---
 
-## 🧩 Common Issues & Fixes
-
-### ❌ Webcam not opening
-
-Try:
-
-```python
-cv2.VideoCapture(1)
----
-
-
 ## 📜 License
 
 This project is open-source and available under the MIT License.
