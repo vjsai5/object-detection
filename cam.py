@@ -2,10 +2,10 @@ from ultralytics import YOLO
 import cv2
 import threading
 
-# Load detection model
+
 detector = YOLO("yolov8n.pt")
 
-# Start webcam
+
 camera = cv2.VideoCapture(0)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
@@ -13,7 +13,7 @@ camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 current_frame = None
 is_running = True
 
-# Keep track of unique objects
+
 seen_ids = set()
 object_total = 0
 
@@ -26,7 +26,7 @@ def read_camera():
             current_frame = img.copy()
 
 
-# Start camera thread
+
 threading.Thread(target=read_camera, daemon=True).start()
 
 
@@ -34,13 +34,13 @@ while True:
     if current_frame is None:
         continue
 
-    # Resize frame for faster processing
+    
     display_frame = cv2.resize(current_frame, (640, 480))
 
-    # Run tracking
+   
     output = detector.track(display_frame, persist=True, conf=0.5, verbose=False)[0]
 
-    # Draw boxes
+    
     result_frame = output.plot()
 
     if output.boxes is not None and output.boxes.id is not None:
@@ -55,7 +55,7 @@ while True:
                 seen_ids.add(track_id)
                 object_total += 1
 
-    # Show count
+    
     cv2.putText(result_frame,
                 f"Objects counted: {object_total}",
                 (10, 35),
