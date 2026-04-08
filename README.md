@@ -57,12 +57,6 @@ A real-time object detection and tracking system built using YOLOv8 and OpenCV. 
 
 ---
 
-## 📜 License
-
-This project is open-source and available under the MIT License.
-
----
-
 ## 🙌 Acknowledgements
 
 * Ultralytics YOLOv8
